@@ -1,0 +1,326 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>斐波那契数列 · 算法设计</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="03 汉诺塔.html" />
+    
+    
+    <link rel="prev" href="01 基本思想.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    递归
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="01 基本思想.html">
+            
+                <a href="01 基本思想.html">
+            
+                    
+                    基本思想
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="02 斐波那契数列.html">
+            
+                <a href="02 斐波那契数列.html">
+            
+                    
+                    斐波那契数列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="03 汉诺塔.html">
+            
+                <a href="03 汉诺塔.html">
+            
+                    
+                    汉诺塔
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="04 N皇后.html">
+            
+                <a href="04 N皇后.html">
+            
+                    
+                    N皇后
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../参考文献.html">
+            
+                <a href="../参考文献.html">
+            
+                    
+                    参考文献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+</ul>
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >斐波那契数列</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x95EE;&#x9898;&#x63CF;&#x8FF0;"><b></b>&#x95EE;&#x9898;&#x63CF;&#x8FF0;</a></li><li><span class="title-icon "></span><a href="#&#x53C2;&#x8003;&#x4EE3;&#x7801;"><b></b>&#x53C2;&#x8003;&#x4EE3;&#x7801;</a></li></ul></div><a href="#&#x95EE;&#x9898;&#x63CF;&#x8FF0;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="&#x95EE;&#x9898;&#x63CF;&#x8FF0;"><a name="&#x95EE;&#x9898;&#x63CF;&#x8FF0;" class="anchor-navigation-ex-anchor" href="#&#x95EE;&#x9898;&#x63CF;&#x8FF0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x95EE;&#x9898;&#x63CF;&#x8FF0;</h1>
+<p>&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#xFF08;Fibonacci Sequence&#xFF09;&#xFF0C;&#x53C8;&#x79F0;&#x201C;&#x9EC4;&#x91D1;&#x5206;&#x5272;&#x6570;&#x5217;&#x201D;&#xFF0C;&#x56E0;&#x6570;&#x5B66;&#x5BB6;&#x201C;&#x83B1;&#x6602;&#x7EB3;&#x591A;&#xB7;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#xFF08;Leonardo Fibonacci&#xFF09;&#x201D;&#x4EE5;&#x5154;&#x5B50;&#x7E41;&#x6B96;&#x4E3A;&#x4F8B;&#x5B50;&#x800C;&#x5F15;&#x5165;&#xFF0C;&#x6545;&#x53C8;&#x79F0;&#x4E3A;&#x201C;&#x5154;&#x5B50;&#x6570;&#x5217;&#x201D;&#x3002;</p>
+<p>&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#x6307;&#x7684;&#x662F;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x6570;&#x5217;&#xFF1A;</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>{</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo separator="true">,</mo><mn>5</mn><mo separator="true">,</mo><mn>8</mn><mo separator="true">,</mo><mn>1</mn><mn>3</mn><mo separator="true">,</mo><mn>2</mn><mn>1</mn><mo separator="true">,</mo><mn>3</mn><mn>4</mn><mo separator="true">,</mo><mn>5</mn><mn>5</mn><mo separator="true">,</mo><mn>8</mn><mn>9</mn><mo separator="true">,</mo><mrow><mo>&#x22EF;</mo></mrow><mo>}</mo></mrow><annotation encoding="application/x-tex">
+\{1,1,2,3,5,8,13,21,34,55,89,{\cdots}\}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">{</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">2</span><span class="mpunct">,</span><span class="mord mathrm">3</span><span class="mpunct">,</span><span class="mord mathrm">5</span><span class="mpunct">,</span><span class="mord mathrm">8</span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mord mathrm">3</span><span class="mpunct">,</span><span class="mord mathrm">2</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">3</span><span class="mord mathrm">4</span><span class="mpunct">,</span><span class="mord mathrm">5</span><span class="mord mathrm">5</span><span class="mpunct">,</span><span class="mord mathrm">8</span><span class="mord mathrm">9</span><span class="mpunct">,</span><span class="mord textstyle uncramped"><span class="minner">&#x22EF;</span></span><span class="mclose">}</span></span></span></span></p>
+<p>&#x5728;&#x6570;&#x5B66;&#x4E0A;&#xFF0C;&#x6590;&#x6CE2;&#x7EB3;&#x5951;&#x6570;&#x5217;&#x4EE5;&#x5982;&#x4E0B;&#x9012;&#x63A8;&#x7684;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>(</mo><mn>1</mn><mo>)</mo><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mi>F</mi><mo>(</mo><mn>2</mn><mo>)</mo><mo>=</mo><mn>1</mn><mi>F</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>F</mi><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mn>1</mn><mo>)</mo><mo>+</mo><mi>F</mi><mo>(</mo><mi>n</mi><mo>&#x2212;</mo><mn>2</mn><mo>)</mo><mrow><mtext>&#xA0;</mtext><mtext>&#xA0;</mtext></mrow><mo>(</mo><mi>n</mi><mrow><mo>&#x2265;</mo></mrow><mn>3</mn><mo separator="true">,</mo><mi>n</mi><mrow><mo>&#x2208;</mo></mrow><mi>N</mi><mo>&#x2217;</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">
+F(1)=1,F(2)=1F(n)=F(n-1)+F(n-2){\ \ }(n{\geq}3,n{\in}N*)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathrm">2</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mbin">&#x2212;</span><span class="mord mathrm">1</span><span class="mclose">)</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mbin">&#x2212;</span><span class="mord mathrm">2</span><span class="mclose">)</span><span class="mord textstyle uncramped"><span class="mspace">&#xA0;</span><span class="mspace">&#xA0;</span></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord textstyle uncramped"><span class="mrel">&#x2265;</span></span><span class="mord mathrm">3</span><span class="mpunct">,</span><span class="mord mathit">n</span><span class="mord textstyle uncramped"><span class="mrel">&#x2208;</span></span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mord">&#x2217;</span><span class="mclose">)</span></span></span></span></p>
+<h1 id="&#x53C2;&#x8003;&#x4EE3;&#x7801;"><a name="&#x53C2;&#x8003;&#x4EE3;&#x7801;" class="anchor-navigation-ex-anchor" href="#&#x53C2;&#x8003;&#x4EE3;&#x7801;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x53C2;&#x8003;&#x4EE3;&#x7801;</h1>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span> || n == <span class="hljs-number">2</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-keyword">return</span> solve(n - <span class="hljs-number">1</span>) + solve(n - <span class="hljs-number">2</span>);
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="01 基本思想.html" class="navigation navigation-prev " aria-label="Previous page: 基本思想">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="03 汉诺塔.html" class="navigation navigation-next " aria-label="Next page: 汉诺塔">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"斐波那契数列","level":"1.2.2","depth":2,"next":{"title":"汉诺塔","level":"1.2.3","depth":2,"path":"articles/01 递归/03 汉诺塔.md","ref":"articles/01 递归/03 汉诺塔.md","articles":[]},"previous":{"title":"基本思想","level":"1.2.1","depth":2,"path":"articles/01 递归/01 基本思想.md","ref":"articles/01 递归/01 基本思想.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","anchor-navigation-ex","katex","code"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"size":2,"family":"serif","theme":"white"},"highlight":{},"anchor-navigation-ex":{"showLevelIcon":false,"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":false,"multipleH2":false,"associatedWithSummary":true,"multipleH3":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"multipleH4":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"算法设计","language":"zh-hans","gitbook":"*"},"file":{"path":"articles/01 递归/02 斐波那契数列.md","mtime":"2023-03-09T16:25:06.498Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-03-09T16:25:16.214Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
