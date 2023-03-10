@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>N皇后 · 算法设计</title>
+        <title>快速排序 · 算法设计</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,8 +61,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="03 归并排序.html" />
     
-    <link rel="prev" href="03 汉诺塔.html" />
     
 
     </head>
@@ -118,9 +118,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="01 基本思想.html">
+        <li class="chapter " data-level="1.2.1" data-path="../01 递归/01 基本思想.html">
             
-                <a href="01 基本思想.html">
+                <a href="../01 递归/01 基本思想.html">
             
                     
                     基本思想
@@ -131,9 +131,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="02 斐波那契数列.html">
+        <li class="chapter " data-level="1.2.2" data-path="../01 递归/02 斐波那契数列.html">
             
-                <a href="02 斐波那契数列.html">
+                <a href="../01 递归/02 斐波那契数列.html">
             
                     
                     斐波那契数列
@@ -144,9 +144,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="03 汉诺塔.html">
+        <li class="chapter " data-level="1.2.3" data-path="../01 递归/03 汉诺塔.html">
             
-                <a href="03 汉诺塔.html">
+                <a href="../01 递归/03 汉诺塔.html">
             
                     
                     汉诺塔
@@ -157,9 +157,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.4" data-path="04 N皇后.html">
+        <li class="chapter " data-level="1.2.4" data-path="../01 递归/04 N皇后.html">
             
-                <a href="04 N皇后.html">
+                <a href="../01 递归/04 N皇后.html">
             
                     
                     N皇后
@@ -189,9 +189,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../02 分治/02 快速排序.html">
+        <li class="chapter active" data-level="1.3.1" data-path="02 快速排序.html">
             
-                <a href="../02 分治/02 快速排序.html">
+                <a href="02 快速排序.html">
             
                     
                     快速排序
@@ -202,9 +202,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../02 分治/03 归并排序.html">
+        <li class="chapter " data-level="1.3.2" data-path="03 归并排序.html">
             
-                <a href="../02 分治/03 归并排序.html">
+                <a href="03 归并排序.html">
             
                     
                     归并排序
@@ -319,7 +319,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >N皇后</a>
+        <a href="../.." >快速排序</a>
     </h1>
 </div>
 
@@ -334,7 +334,51 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+    quickSort(<span class="hljs-number">0</span>, arr.length - <span class="hljs-number">1</span>);
+    System.out.println(Arrays.toString(arr));
+}
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] arr = { <span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">8</span> };
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right)</span> </span>{
+    <span class="hljs-keyword">if</span> (left &gt; right) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-comment">// &#x4FDD;&#x5B58;&#x672C;&#x6B21;&#x6392;&#x5E8F;&#x7684;&#x5DE6;&#x53F3;&#x8FB9;&#x754C;&#x7528;&#x4EE5;&#x9012;&#x5F52;</span>
+    <span class="hljs-keyword">int</span> oldLeft = left, oldRight = right;
+    <span class="hljs-comment">// &#x628A;&#x6700;&#x5DE6;&#x8FB9;&#x7684;&#x6570;&#x5B9A;&#x4E3A;&#x3010;&#x57FA;&#x51C6;&#x6570;&#x3011;</span>
+    <span class="hljs-keyword">int</span> refer = left;
+
+    <span class="hljs-keyword">while</span> (left != right ) {
+        <span class="hljs-comment">// &#x4ECE;&#x53F3;&#x5F80;&#x5DE6;&#x627E;&#x5230;&#x6BD4;&#x57FA;&#x51C6;&#x6570;&#x5C0F;&#x7684;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x505C;&#x6B62;&#x5BFB;&#x627E;</span>
+        <span class="hljs-keyword">while</span> (arr[right] &gt; arr[refer] &amp;&amp; left &lt; right) {
+            right--;
+        }
+        <span class="hljs-comment">// &#x518D;&#x4ECE;&#x5DE6;&#x5230;&#x53F3;&#x627E;&#x6BD4;&#x57FA;&#x51C6;&#x6570;&#x5927;&#x7684;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x505C;&#x6B62;&#x5BFB;&#x627E;&#xFF0C;&#x548C;&#x53F3;&#x8FB9;&#x7684;&#x6570;&#x4EA4;&#x6362;</span>
+        <span class="hljs-keyword">while</span> (arr[left] &lt; arr[refer] &amp;&amp; left &lt; right) {
+            left++;
+        }
+        <span class="hljs-keyword">if</span> (left &lt; right) {
+            <span class="hljs-keyword">int</span> temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+        }
+    }
+    <span class="hljs-comment">// &#x5982;&#x6B64;&#x5FAA;&#x73AF;&#xFF0C;&#x76F4;&#x5230;&#x53F3;&#x4E0B;&#x6807;&#x4E0E;&#x5DE6;&#x4E0B;&#x6807;&#x76F8;&#x9047;&#xFF0C;&#x5E76;&#x5C06;&#x57FA;&#x51C6;&#x6570;&#x4E0E;&#x76F8;&#x9047;&#x4F4D;&#x7F6E;&#x4E0A;&#x7684;&#x6570;&#x4EA4;&#x6362;</span>
+    <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x7528; right &#x4E5F;&#x53EF;&#x4EE5;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4E24;&#x4E2A;&#x6B64;&#x65F6;&#x662F;&#x76F8;&#x7B49;&#x7684;</span>
+    <span class="hljs-keyword">int</span> temp = arr[refer];
+    arr[refer] = arr[left];
+    arr[left] = temp;
+
+    <span class="hljs-comment">// &#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5199;&#x6210; (0, left - 1) &#x548C; (left + 1, arr.length - 1)&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x9700;&#x8981;&#x7684;&#x662F;&#x5F53;&#x524D;&#x57FA;&#x51C6;&#x4E0B;&#x6807;&#x7684;&#x5DE6;&#x533A;&#x95F4;&#x548C;&#x53F3;&#x533A;&#x95F4;&#xFF0C;&#x7528;&#x65E7;&#x7684;&#x4E0B;&#x6807;&#x4F5C;&#x4E3A;&#x5DE6;&#x53F3;&#x8FB9;&#x754C;&#x5373;&#x53EF;</span>
+    quickSort(oldLeft, left - <span class="hljs-number">1</span>);
+    quickSort(left + <span class="hljs-number">1</span>, oldRight);
+    <span class="hljs-keyword">return</span>;
+}
+</code></pre>
+
                                 
                                 </section>
                             
@@ -361,10 +405,10 @@
 
             
                 
-                <a href="03 汉诺塔.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 汉诺塔">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
+                <a href="03 归并排序.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 归并排序">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -373,7 +417,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"N皇后","level":"1.2.4","depth":2,"next":{"title":"分治","level":"1.3","depth":1,"ref":"","articles":[{"title":"快速排序","level":"1.3.1","depth":2,"path":"articles/02 分治/02 快速排序.md","ref":"articles/02 分治/02 快速排序.md","articles":[]},{"title":"归并排序","level":"1.3.2","depth":2,"path":"articles/02 分治/03 归并排序.md","ref":"articles/02 分治/03 归并排序.md","articles":[]}]},"previous":{"title":"汉诺塔","level":"1.2.3","depth":2,"path":"articles/01 递归/03 汉诺塔.md","ref":"articles/01 递归/03 汉诺塔.md","articles":[]},"dir":"neutral"},"config":{"plugins":["-sharing","anchor-navigation-ex","katex","code","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"size":2,"family":"serif","theme":"white"},"highlight":{},"anchor-navigation-ex":{"showLevelIcon":false,"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":false,"multipleH2":false,"associatedWithSummary":true,"multipleH3":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"multipleH4":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"算法设计","language":"zh-hans","gitbook":"*"},"file":{"path":"articles/01 递归/04 N皇后.md","mtime":"2023-03-09T08:22:30.898Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-03-10T17:36:08.450Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"快速排序","level":"1.3.1","depth":2,"next":{"title":"归并排序","level":"1.3.2","depth":2,"path":"articles/02 分治/03 归并排序.md","ref":"articles/02 分治/03 归并排序.md","articles":[]},"previous":{"title":"分治","level":"1.3","depth":1,"ref":"","articles":[{"title":"快速排序","level":"1.3.1","depth":2,"path":"articles/02 分治/02 快速排序.md","ref":"articles/02 分治/02 快速排序.md","articles":[]},{"title":"归并排序","level":"1.3.2","depth":2,"path":"articles/02 分治/03 归并排序.md","ref":"articles/02 分治/03 归并排序.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-sharing","anchor-navigation-ex","katex","code","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"fontSettings":{"size":2,"family":"serif","theme":"white"},"highlight":{},"anchor-navigation-ex":{"showLevelIcon":false,"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":false,"multipleH2":false,"associatedWithSummary":true,"multipleH3":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"multipleH4":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"算法设计","language":"zh-hans","gitbook":"*"},"file":{"path":"articles/02 分治/02 快速排序.md","mtime":"2023-03-10T11:41:17.706Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-03-10T17:36:08.450Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
